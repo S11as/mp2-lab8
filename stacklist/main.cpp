@@ -1,7 +1,15 @@
 #include <iostream>
+#include "TStackList.h"
 
 int main()
 {
-    std::cout<<"Hello world"<<std::endl;
+    TStackList<int> s;
+    for (int i = 0; i < 20; ++i) {
+        s.push(i);
+    }
+    s.save("tmp.txt");
+
+    TStackList<int> b = TStackList<int>::load("tmp.txt");
+
     return 0;
 }
