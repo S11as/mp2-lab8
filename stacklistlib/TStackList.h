@@ -14,7 +14,7 @@ protected:
 public:
     TStackList() = default;
 
-    TStackList(const TList<T> &list);
+    TStackList(TList<T> &list);
 
     TStackList(TStackList<T> &stack);
 
@@ -52,7 +52,7 @@ TStackList<T>::TStackList(TStackList<T> &stack) {
 }
 
 template<class T>
-TStackList<T>::TStackList(const TList<T> &list) {
+TStackList<T>::TStackList(TList<T> &list) {
     this->list = list;
 }
 
@@ -134,7 +134,8 @@ T TStackList<T>::get_least() {
 template<class T>
 TStackList<T> &TStackList<T>::load(const char *name) {
     TList<T> list = TList<T>::load(name);
-    return TStackList<T>(list);
+    TStackList<T>* stack = new TStackList(list);
+    return *stack;
 }
 
 template<class T>

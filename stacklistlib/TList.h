@@ -301,7 +301,7 @@ TList<T> &TList<T>::load(const char *name) {
     int size;
     file >> size;
     auto* list = new TList();
-    file>>list;
+    file>>*list;
     file.close();
     return *list;
 }
